@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Swagger UI Prettify",
+  "version": "1.0",
+  "description": "Prettify response json in Swagger UI",
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "img/logo_128.png",
+      "48": "img/logo_128.png",
+      "128": "img/logo_128.png"
+    }
+  },
+  "icons": {
+    "16": "img/logo_128.png",
+	"48": "img/logo_128.png",
+	"128": "img/logo_128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/swagger-ui.html*", "http://*/swagger-ui.html*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ]
+}
