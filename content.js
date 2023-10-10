@@ -308,7 +308,8 @@ function getOrCreateHiddenChild(container) {
 
 
 // Function to add a custom button
-function addCustomButtons(container) {
+function addCustomButtons(id) {
+    var container = document.querySelector("pre[data-id='"+id+"']");
 
     if (container) {
         console.log(container);
@@ -372,13 +373,17 @@ function watchForChanges() {
     // Create a MutationObserver instance
     const observer = new MutationObserver(function (mutationsList) {
         for (const mutation of mutationsList) {
+          // console.log(mutation);
             if (mutation.addedNodes.length > 0) {
                 const target = mutation.target;
                 const node = mutation.addedNodes[0];
+
                 if (target.className == "block response_body json" && node.localName == "pre" && (node.className == "json") || (node.className == "json-viewer")) {
                     // console.log("Custom Button click loaded", node);
-                    addCustomButtons(document.querySelector('pre.json'));
-                    break;
+                    var id = new Date().valueOf();
+                    node.setAttribute("data-id", id);
+                    addCustomButtons(id);
+                    // break;
                 }
             }
         }
