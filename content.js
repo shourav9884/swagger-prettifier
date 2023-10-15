@@ -378,7 +378,7 @@ function watchForChanges() {
                 const target = mutation.target;
                 const node = mutation.addedNodes[0];
 
-                if (target.className == "block response_body json" && node.localName == "pre" && (node.className == "json") || (node.className == "json-viewer")) {
+                if (target.className.includes("block response_body") && node.localName == "pre" && (node.className == "json" || node.className == "json-viewer")) {
                     // console.log("Custom Button click loaded", node);
                     var id = new Date().valueOf();
                     node.setAttribute("data-id", id);
